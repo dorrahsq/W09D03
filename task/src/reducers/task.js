@@ -15,6 +15,12 @@ const getTasks = (state = initialState, action) => {
         allTasks: state.allTasks.filter((item) => item._id !== taskId),
       };
 
+    case "ADD":
+      const { task } = payload;
+      return {
+        allTasks: [...state.allTasks, task],
+      };
+
     default:
       return state;
   }
@@ -32,6 +38,13 @@ export const taskss = (data) => {
 export const deletee = (data) => {
   return {
     type: "DELETE",
+    payload: data,
+  };
+};
+
+export const add = (data) => {
+  return {
+    type: "ADD",
     payload: data,
   };
 };
