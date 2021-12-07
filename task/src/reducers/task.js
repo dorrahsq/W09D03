@@ -21,6 +21,15 @@ const getTasks = (state = initialState, action) => {
         allTasks: [...state.allTasks, task],
       };
 
+    case "UPDATE":
+      const { newTask } = payload;
+      return {
+        ...state,
+        allTasks: state.allTasks.map((ele) =>
+          ele._id == newTask[0]._id ? { ...ele, name: newTask[0].name } : ele
+        ),
+      };
+
     default:
       return state;
   }
@@ -45,6 +54,13 @@ export const deletee = (data) => {
 export const add = (data) => {
   return {
     type: "ADD",
+    payload: data,
+  };
+};
+
+export const update = (data) => {
+  return {
+    type: "UPDATE",
     payload: data,
   };
 };
