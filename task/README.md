@@ -16,6 +16,7 @@ Todo-List made In React and Node.js/Express with CRUD Functionality
 - Add a new task
 - Update task
 - Delete task
+- Complete/Incomplete task
 
 <a name="adminSto"></a>
 ## Admin Stories
@@ -29,6 +30,7 @@ Todo-List made In React and Node.js/Express with CRUD Functionality
 - Add a new task
 - Update task
 - Delete task
+- Complete/Incomplete task
 
 
 ## Frontend
@@ -67,17 +69,21 @@ OneUser       | `/user/:id`   | admin only
   name: { type: String, required: true },
   user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
   isDeleted: { type: Boolean, default: false },
+  isCompleted: { type: Boolean, default: false },
 }
 ```
 <a name="backR"></a>
 ### Routes
-HTTP Method   | authorize     |    Path       |  Request Body         
-------------- | -----------   | ------------  |---------------------- 
-POST          | everyone      |`/user/create` |{email, password, role}
-POST          | everyone      |`/user/log`    |{email, password }     
-GET           | admin only    |`/user/`       |                       
-DELETE        | admin only    |`/user/`       |                       
-GET           | admin + user  |`/task/:id`    | 
-POST          | admin + user  |`/task/create` |{user, name}
-PUT           | admin + user  |`/task/update` |{id, newName}
-PUT           | admin + user  |`/task/delete` |{id}
+HTTP Method   | authorize     |    Path           |  Request Body         
+------------- | -----------   | ------------      |---------------------- 
+POST          | everyone      |`/user/create`     |{email, password, role}
+POST          | everyone      |`/user/log`        |{email, password }     
+GET           | admin only    |`/user/`           |                       
+DELETE        | admin only    |`/user/`           |                       
+GET           | admin + user  |`/task/:id`        | 
+POST          | admin + user  |`/task/create`     |{user, name}
+PUT           | admin + user  |`/task/update`     |{id, newName}
+PUT           | admin + user  |`/task/delete`     |{id}
+PUT           | admin + user  |`/task/complete`   |{id}
+PUT           | admin + user  |`/task/inComplete` |{id}
+
