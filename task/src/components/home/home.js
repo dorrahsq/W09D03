@@ -75,10 +75,7 @@ const Home = () => {
         },
       }
     );
-    // console.log(updatedTaskb.data);
     dispatch(update({ newTask: updatedTaskb.data }));
-    // console.log(state.taskss.allTasks);
-    //newName
     getAllTask();
   };
 
