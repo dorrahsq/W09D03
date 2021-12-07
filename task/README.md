@@ -18,7 +18,7 @@ Todo-List made In React and Node.js/Express with CRUD Functionality
 - Delete task
 
 <a name="adminSto"></a>
-## admin Stories
+## Admin Stories
 - Login
 - View all of the tasks for any user
 - Delete users
