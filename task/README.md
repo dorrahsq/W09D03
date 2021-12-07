@@ -1,7 +1,14 @@
 # TodoList (React and Express)
+Todo-List made In React and Node.js/Express with CRUD Functionality
 
-## Description
+## Table of Contents
+1. [ User Stories. ](#userStor)
+2. [ Admin Stories. ](#adminSto)
+3. [ Frontend Routes. ](#frontRoutes)
+4. [ Backend Models.  ](#backM)
+5. [ Backend Routes.  ](#backR)
 
+<a name="userStor"></a>
 ## User Stories
 - Signup
 - Login
@@ -10,6 +17,7 @@
 - Update task
 - Delete task
 
+<a name="adminSto"></a>
 ## admin Stories
 - Login
 - View all of the tasks for any user
@@ -24,19 +32,52 @@
 
 
 ## Frontend
-
+<a name="frontRoutes"></a>
 ### Routes
-Component     |     Path    |  Permissions
-------------- | ----------- | ------------
-Login         | /           | everyone
-SignUp        | /signup     | everyone
-Home          | /home       | user + admin 
-Users         | /usres      | admin only 
-OneUser       | /user/:id   | admin only 
+Component     |     Path      |  Permissions
+------------- | -----------   | ------------
+Login         | `/`           | everyone
+SignUp        | `/signup`     | everyone
+Home          | `/home`       | user + admin 
+Users         | `/usres`      | admin only 
+OneUser       | `/user/:id`   | admin only 
 
-
+<a name="backM"></a>
 ## Backend
 
-### Models
-
+### Models:
+#### - Role model 
+```
+{
+  role: { type: String, required: true },
+  permissions: { type: Array, required: true },
+}
+```
+#### - User model 
+```
+{
+  email: { type: String, required: true, unique: true, validate: { validator: validator.isEmail, message: "{VALUE} is not a valid email"}},
+  password: { type: String, required: true },
+  role: { type: mongoose.Schema.Types.ObjectId, ref: "Role", required: true }
+}
+```
+#### - Task model 
+```
+{
+  name: { type: String, required: true },
+  user: { type: mongoose.Schema.Types.ObjectId, ref: "User" },
+  isDeleted: { type: Boolean, default: false },
+}
+```
+<a name="backR"></a>
 ### Routes
+HTTP Method   | authorize     |    Path       |  Request Body         
+------------- | -----------   | ------------  |---------------------- 
+POST          | everyone      |`/user/create` |{email, password, role}
+POST          | everyone      |`/user/log`    |{email, password }     
+GET           | admin only    |`/user/`       |                       
+DELETE        | admin only    |`/user/`       |                       
+GET           | admin + user  |`/task/:id`    | 
+POST          | admin + user  |`/task/create` |{user, name}
+PUT           | admin + user  |`/task/update` |{id, newName}
+PUT           | admin + user  |`/task/delete` |{id}
