@@ -19,9 +19,9 @@ const OneUser = () => {
   }, []);
 
   const getAllTask = async () => {
-    const tasks = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/task/`,
-      { reqUserId: id },
+    const tasks = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/task/${id}`,
+      // { reqUserId: id },
       {
         headers: {
           Authorization: `Bearer ${state.signIn.token}`,

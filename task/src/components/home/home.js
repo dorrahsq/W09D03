@@ -20,9 +20,9 @@ const Home = () => {
   }, []);
 
   const getAllTask = async () => {
-    const tasks = await axios.post(
-      `${process.env.REACT_APP_BASE_URL}/task/`,
-      { reqUserId: state.signIn.userID },
+    const tasks = await axios.get(
+      `${process.env.REACT_APP_BASE_URL}/task/${state.signIn.userID}`,
+      // { reqUserId: state.signIn.userID },
       {
         headers: {
           Authorization: `Bearer ${state.signIn.token}`,
