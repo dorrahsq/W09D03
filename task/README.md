@@ -3,7 +3,25 @@
 ## Description
 
 ## User Stories
-- Login: as a user, you can log in and see your saved data
+- Signup
+- Login
+- View your tasks
+- Add a new task
+- Update task
+- Delete task
+
+## admin Stories
+- Login
+- View all of the tasks for any user
+- Delete users
+- Add a new task for any user
+- Update any task for any user
+- Delete any task for any user
+- View your tasks
+- Add a new task
+- Update task
+- Delete task
+
 
 ## Frontend
 
@@ -17,3 +35,8 @@ Users         | /usres      | admin only
 OneUser       | /user/:id   | admin only 
 
 
+## Backend
+
+### Models
+
+### Routes
