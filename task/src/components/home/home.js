@@ -3,12 +3,13 @@ import axios from "axios";
 import "./style.css";
 import { RiPencilFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { taskss, deletee, add, update } from "../../reducers/task";
+import { taskss, deletee, add, update , completeRedu , unCompleteRedu } from "../../reducers/task";
+import Try from "../try/try";
 
 const Home = () => {
   const [newTask, setNewTask] = useState("");
   const [updatedTask, setUpdatedTask] = useState("");
-
+  const [text, setText] = useState("");
   const state = useSelector((state) => {
     return state;
   });
@@ -65,18 +66,49 @@ const Home = () => {
   };
 
   const changeTask = async (taskId) => {
-    console.log("change task");
+    if (updatedTask.length == 0 || updatedTask.trim().length == 0) {
+      console.log("you cant");
+      setText("you need to write somthing");
+    } else {
+      const updatedTaskb = await axios.put(
+        `${process.env.REACT_APP_BASE_URL}/task/update`,
+        { _id: taskId, newName: updatedTask },
+        {
+          headers: {
+            Authorization: `Bearer ${state.signIn.token}`,
+          },
+        }
+      );
+      dispatch(update({ newTask: updatedTaskb.data }));
+      setText("");
+    }
+  };
+
+  const complete = async (taskId) => {
     const updatedTaskb = await axios.put(
-      `${process.env.REACT_APP_BASE_URL}/task/update`,
-      { _id: taskId, newName: updatedTask },
+      `${process.env.REACT_APP_BASE_URL}/task/complete`,
+      { _id: taskId },
       {
         headers: {
           Authorization: `Bearer ${state.signIn.token}`,
         },
       }
     );
-    dispatch(update({ newTask: updatedTaskb.data }));
-    getAllTask();
+    dispatch(completeRedu({ taskID: updatedTaskb.data._id }));
+  };
+
+  const unComplete = async (taskId) => {
+    const updatedTaskb = await axios.put(
+      `${process.env.REACT_APP_BASE_URL}/task/unComplete`,
+      { _id: taskId },
+      {
+        headers: {
+          Authorization: `Bearer ${state.signIn.token}`,
+        },
+      }
+    );
+    dispatch(unCompleteRedu({ TaskId: taskId}));
+
   };
 
   return (
@@ -97,7 +129,13 @@ const Home = () => {
           {state.getTasks.allTasks.map((ele) => {
             return (
               <div key={ele._id}>
-                <h3> {ele.name} </h3>
+                {/* <Try name = {ele.name}/> */}
+                {ele.isCompleted ? (
+                  <h3 className="completed" onClick={()=>unComplete(ele._id)}> {ele.name} </h3>
+                ) : (
+                  <h3 onClick={() => complete(ele._id)}> {ele.name} </h3>
+                )}
+
                 <button
                   onClick={() => {
                     deleteTask(ele._id);
@@ -119,6 +157,7 @@ const Home = () => {
               </div>
             );
           })}
+          {text}
         </div>
       )}
     </div>

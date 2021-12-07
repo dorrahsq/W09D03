@@ -1,0 +1,34 @@
+.home {
+    margin: 100px;
+    text-align: center;
+    font-family: 'Courier New', Courier, monospace;
+  }
+  
+  .home input {
+    border-radius: 3px;
+    margin: 5px;
+    padding: 6px;
+  }
+  
+  .home h3 {
+    display: inline;
+  }
+
+  .home h3:hover {
+    cursor:grab
+  }
+
+  .home button {
+    border-radius: 3px;
+    margin: 5px;
+    border-style: none;
+    padding: 6px;
+  }
+
+  .home button:hover  {
+  cursor: pointer;
+  }
+  
+  .completed{
+    text-decoration: line-through;
+  }

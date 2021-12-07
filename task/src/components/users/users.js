@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import axios from "axios";
+import "./style.css";
 
 const Users = () => {
   let navigate = useNavigate();
@@ -45,16 +46,16 @@ const Users = () => {
       {allUsers.length &&
         allUsers.map((ele) => {
           return (
-            <>
-              <h3
+            <div className="userss">
+              <h4 
                 onClick={() => {
                   goInside(ele._id);
                 }}
               >
-                {ele.email}
-              </h3>
+              -  {ele.email}
+              </h4>
               <button onClick={() => deleteUser(ele._id)}> delete </button>
-            </>
+            </div>
           );
         })}
 

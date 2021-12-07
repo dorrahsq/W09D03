@@ -31,8 +31,8 @@ const Header = () => {
           state.signIn.role == "61a4e135a6502019b9898c1e" ? (
             <ul>
               <li className="lie">
-                <Link className="link" to="/usres">
-                  users
+                <Link id="first" className="link" to="/usres">
+                  Users
                 </Link>
               </li>
               <li className="lie" id="homeNav">
@@ -41,7 +41,7 @@ const Header = () => {
                 </Link>
               </li>
 
-              <li id="logOut">
+              <li className="lie" >
                 <p className="link" onClick={logout}>
                   {" "}
                   <AiOutlineLogout />

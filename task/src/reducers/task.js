@@ -6,8 +6,8 @@ const getTasks = (state = initialState, action) => {
 
   switch (type) {
     case "GET":
-      const { allTasks } = payload;
-      return { allTasks };
+      //   const { allTasks } = payload;
+      return payload;
 
     case "DELETE":
       const { taskId } = payload;
@@ -27,6 +27,24 @@ const getTasks = (state = initialState, action) => {
         ...state,
         allTasks: state.allTasks.map((ele) =>
           ele._id == newTask[0]._id ? { ...ele, name: newTask[0].name } : ele
+        ),
+      };
+
+    case "COMPLETE":
+      const { taskID } = payload;
+      return {
+        ...state,
+        allTasks: state.allTasks.map((ele) =>
+          ele._id == taskID ? { ...ele, isCompleted: true } : ele
+        ),
+      };
+
+    case "UNCOMPLETE":
+      const { TaskId } = payload;
+      return {
+        ...state,
+        allTasks: state.allTasks.map((ele) =>
+          ele._id == TaskId ? { ...ele, isCompleted: false } : ele
         ),
       };
 
@@ -61,6 +79,19 @@ export const add = (data) => {
 export const update = (data) => {
   return {
     type: "UPDATE",
+    payload: data,
+  };
+};
+export const completeRedu = (data) => {
+  return {
+    type: "COMPLETE",
+    payload: data,
+  };
+};
+
+export const unCompleteRedu = (data) => {
+  return {
+    type: "UNCOMPLETE",
     payload: data,
   };
 };
