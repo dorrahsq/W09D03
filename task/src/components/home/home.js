@@ -3,7 +3,7 @@ import axios from "axios";
 import "./style.css";
 import { RiPencilFill } from "react-icons/ri";
 import { useSelector, useDispatch } from "react-redux";
-import { taskss} from "../../reducers/task";
+import { taskss , deletee} from "../../reducers/task";
 
 const Home = () => {
   const [newTask, setNewTask] = useState("");
@@ -36,16 +36,24 @@ const Home = () => {
   };
 
   const deleteTask = async (taskId) => {
-  
+    await axios.put(
+      `${process.env.REACT_APP_BASE_URL}/task/delete`,
+      { _id: taskId },
+      {
+        headers: {
+          Authorization: `Bearer ${state.signIn.token}`,
+        },
+      }
+    );
+    const data = {
+      taskId,
+    };
+    dispatch(deletee(data));
   };
 
-  const addTask = async () => {
-  
-  };
+  const addTask = async () => {};
 
-  const changeTask = async (taskId) => {
-   
-  };
+  const changeTask = async (taskId) => {};
 
   return (
     <div className="home">
