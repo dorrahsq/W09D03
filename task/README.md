@@ -47,6 +47,13 @@ OneUser       | `/user/:id`   | admin only
 <a name="backM"></a>
 ## Backend
 
+### ER diagrm:
+![todos ER drawio](https://user-images.githubusercontent.com/92247950/145214988-71c9bbc8-308c-4220-9f9f-da9cfc3cd89e.png)
+
+### UML diagrm:
+![todos UML drawio](https://user-images.githubusercontent.com/92247950/145215049-bf23d078-ff2b-4cd0-8dda-ed1fe79348a1.png)
+
+
 ### Models:
 #### - Role model 
 ```
