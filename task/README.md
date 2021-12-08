@@ -4,9 +4,15 @@ Todo-List made In React and Node.js/Express with CRUD Functionality
 ## Table of Contents
 1. [ User Stories. ](#userStor)
 2. [ Admin Stories. ](#adminSto)
-3. [ Frontend Routes. ](#frontRoutes)
-4. [ Backend Models.  ](#backM)
-5. [ Backend Routes.  ](#backR)
+3. [ Frontend UML diagrm.](#frontUml)
+4. [ Frontend Routes. ](#frontRoutes)
+5. [ Backend ER diagrm.](#erb)
+6. [ Backend UML diagrm.](#umlb)
+7. [ Backend Models.  ](#backM)
+8. [ Backend Routes.  ](#backR)
+
+
+
 
 <a name="userStor"></a>
 ## User Stories
@@ -34,6 +40,12 @@ Todo-List made In React and Node.js/Express with CRUD Functionality
 
 
 ## Frontend
+
+<a name="frontUml"></a>
+### UML diagrm:
+![todos front UML drawio](https://user-images.githubusercontent.com/92247950/145228507-f4514d16-9471-4dbc-9f08-7216210da40a.png)
+
+
 <a name="frontRoutes"></a>
 ### Routes
 Component     |     Path      |  Permissions
@@ -47,9 +59,11 @@ OneUser       | `/user/:id`   | admin only
 <a name="backM"></a>
 ## Backend
 
+<a name="erb"></a>
 ### ER diagrm:
 ![todos ER drawio](https://user-images.githubusercontent.com/92247950/145214988-71c9bbc8-308c-4220-9f9f-da9cfc3cd89e.png)
 
+<a name="umlb"></a>
 ### UML diagrm:
 ![todos UML drawio](https://user-images.githubusercontent.com/92247950/145215049-bf23d078-ff2b-4cd0-8dda-ed1fe79348a1.png)
 
